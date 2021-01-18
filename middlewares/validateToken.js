@@ -23,7 +23,7 @@ const validateToken = ( req, resp = response, next ) => {
 
     const payload = jwt.verify( token, process.env.TOKEN_SECRET_KEY );
 
-    console.log( payload );
+    console.log( 'validateToken', payload );
 
     // Añadimos uid y name a req así lo recibe authController en el req y con esos datos puede generar un nuevo token
 

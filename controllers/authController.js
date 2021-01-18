@@ -36,6 +36,8 @@ const registerUser = async( req, resp ) => {
 
     user = new UserModel( req.body );
 
+    console.log( 'user de registerUser', user );
+
     // Encriptar password
 
     const salt = bcrypt.genSaltSync();
@@ -46,11 +48,13 @@ const registerUser = async( req, resp ) => {
 
     // Generar json web token (JWT)
 
-    const token = await generateJWT( user.id, user.name );
+    console.log( 'user de registerUser 2', user );
+
+    const token = await generateJWT( user._id, user.name );
 
     resp.status( 201 ).json( {
       ok: true,
-      uid: user.id,
+      uid: user._id,
       name: user.name,
       msg: 'Usuario registrado con éxito',
       token
@@ -152,7 +156,7 @@ const loginUser = async( req, resp ) => {
 
 const renewToken = async( req, resp ) => {
 
-  // console.log( 'datos extraidos del payload del token', req.uid, req.name );
+  console.log( 'datos extraidos del payload del token', req.uid, req.name );
 
   // Generar json web token (JWT)
 
