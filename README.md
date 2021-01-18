@@ -271,3 +271,27 @@ Creamos `controllers/eventController.js` Verificamos que el usuario que está tr
 ## Despliegue del backend en Heroku
 
 Creamos `.gitignore` y añadimos `node_modules`
+
+> `git init`, `git add .`, `git commit -m "backend 1.0"`
+
+Vamos a `https://www.heroku.com/` donde podemos desplegar hasta 5 apps de forma gratuita.
+
+En `package.json` vemos en la parte de scripts `start`, esto es lo que va a ejecutar Heroku, debe apuntar a `node index.js`
+
+En `index.js` debemos tener `process.env.PORT` Heroku pondrá ahí su propio puerto
+
+En Heroku creamos una nueva app y escogemos Deployment method > Heroku Git
+
+Si no tenemos instalado Heroku CLI lo instalamos, podemos comprobarlo con > `heroku --version`
+
+Ahora > `heroku login`
+
+> `heroku git:remote -a awandor-calendar` enlazamos nuestro repositorio local con Heroku
+
+> `git push heroku master` subimos la app
+
+En Heroku open app nos abre la aplicación, ahí tenemos la url de nuestro backend remoto
+
+Ya podemos probar en Postman que todas las rutas funcionan con la nueva url.
+
+Si quiséramos ver los logs en consola de nuestra app > `heroku logs -n 1000 --tail` --tail es para que esté escuchando
