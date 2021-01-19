@@ -10,7 +10,7 @@ Los temas a tratar son:
 - Middlewares de Express
 - JWT
 - Autenticación pasiva
-- Payloas
+- Payloads
 - Encriptación
 - Rutas
 - CORS
@@ -295,3 +295,59 @@ En Heroku open app nos abre la aplicación, ahí tenemos la url de nuestro backe
 Ya podemos probar en Postman que todas las rutas funcionan con la nueva url.
 
 Si quiséramos ver los logs en consola de nuestra app > `heroku logs -n 1000 --tail` --tail es para que esté escuchando
+
+
+
+# GIT
+
+En nuestra cuenta de github creamos un repositorio
+
+Si no tenemos repositorio git local lo creamos > `git init`
+
+Si no tenemos archivo `.gitignore` lo creamos, especialmente para evitar `node_modules`
+
+Añadimos los cambios a GIT> `git add .`
+Commit > `git commit -m "Primer commit"`
+
+Si en este punto borro accidentalmente algo puedo recuperarlo con > `git checkout -- .`
+
+Que nos recontruye los archivos tal y como estaban en el último commit.
+
+Enlazamos el repositorio local con un repositorio externo en GitHub donde tenemos cuenta y hemos creado un repositorio
+`git remote add origin https://github.com/Awandor/react-redux-calendar-CRUD-backend.git`
+
+Situarnos en la rama master > `git branch -M master`
+
+Subir todos los cambios a la rama master remota > `git push -u origin master`
+
+Para reconstruir en local el código de GitHub nos bajamos el código y ejecutamos `npm install` que instala todas las dependencias
+
+
+## Tags y Releases
+
+Crear un tag en Github y un Release
+
+> `git tag -a v1.0.0 -m "Versión 1 - Lista para producción"`
+
+> `git tag` muestra los tags
+
+> `git push --tags` > sube los tags al repositorio remoto
+
+En github vamos a Tags > Add release notes
+
+
+## Desplegar aplicación en GitHub Pages
+
+Tenemos que hacer un pequeño cambio en las rutas de `index.html` del build, en vez de apuntar a la raíz del servidor deben de apuntar
+al directorio que contiene `index.html` simplemente con `./`
+
+Vamos github y creamos un nuevo repositorio, podemos hacer 2 cosas:
+1. Crear un proyecto aparte sólo con el contenido de build y subirlo a github
+2. Renombrar el directorio build a docs, así no será ignorado por `.gitignore` y GitHub Pages lo va a detectar como posible entrada a la app
+y subimos toda la app a github
+
+Ahora vamos acceder al repositorio como si fuera una página web
+
+Vamos a Settings > GitHub Pages > Source > master branch > Save
+
+La app es ahora accesible desde `https://awandor.github.io/...`
